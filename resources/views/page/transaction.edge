@@ -1,0 +1,19 @@
+@layout('layouts/main')
+
+@section('content')
+<section class="showcase">
+  <h2>Your Wishlist</h2>
+  <div class="product-grid">
+    @if(wishlist.length === 0)
+      <p>No items in wishlist.</p>
+    @else
+      @each(item in wishlist)
+        <div class="product-card">
+          <h3>{{ item.name }}</h3>
+          <p class="price">$ {{ item.price }}</p>
+        </div>
+      @endeach
+    @endif
+  </div>
+</section>
+@endsection

@@ -1,0 +1,13 @@
+@layout('layouts/main')
+
+@section('content')
+<section class="showcase">
+  <h2>Contact Us</h2>
+  <form action="/contact" method="POST" style="max-width:500px; margin:auto;">
+    <input type="text" name="name" placeholder="Your Name" required><br><br>
+    <input type="email" name="email" placeholder="Your Email" required><br><br>
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea><br><br>
+    <button class="btn" type="submit">Send</button>
+  </form>
+</section>
+@endsection

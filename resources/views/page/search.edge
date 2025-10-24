@@ -1,0 +1,33 @@
+@layout('layouts/main')
+
+@section('content')
+<section class="showcase">
+  <h2>Search Games</h2>
+  <form action="/search" method="GET">
+    <input type="text" name="q" placeholder="Search games..." value="{{ query }}">
+    <button class="btn">Search</button>
+  </form>
+</section>
+
+<section class="showcase" style="background:#fff;">
+  <h2>Results</h2>
+  <div class="product-grid">
+    @if(results.length === 0)
+      <p>No games found.</p>
+    @else
+      @each(game in results)
+        <div class="product-card">
+          <img src="{{ game.img }}" alt="{{ game.name }}">
+          <h3>{{ game.name }}</h3>
+          <p>{{ game.desc }}</p>
+          <p class="price">$ {{ game.price }}</p>
+          <form action="/wishlist/add" method="POST">
+            <input type="hidden" name="product_id" value="{{ game.id }}">
+            <button type="submit" class="btn">Add to Wishlist</button>
+          </form>
+        </div>
+      @endeach
+    @endif
+  </div>
+</section>
+@endsection
